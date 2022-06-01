@@ -26,6 +26,7 @@ const CHAIN_IDS = {
   rinkeby: 4,
   ropsten: 3,
   dockerParity: 17,
+  bsctest: 97,
 };
 
 const INFURA_KEY = process.env.INFURA_KEY || '';
@@ -81,6 +82,14 @@ export default {
       accounts: [`0x${DEPLOYER_PRIVATE_KEY}`, `0x${CONTROLLER_PRIVATE_KEY}`], // Using private key instead of mnemonic for vanity deploy
       saveDeployments: true,
     },
+    bsctest: {
+      chainId: CHAIN_IDS.bsctest,
+      gas: 20000000,
+      gasPrice: 10000000000,
+      url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+      accounts: [`0x${DEPLOYER_PRIVATE_KEY}`, `0x${CONTROLLER_PRIVATE_KEY}`], // Using private key instead of mnemonic for vanity deploy
+      saveDeployments: true,
+    },
   },
   namedAccounts: {
     deployer: {
@@ -91,6 +100,7 @@ export default {
       [CHAIN_IDS.goerli]: 0,
       [CHAIN_IDS.rinkeby]: 0,
       [CHAIN_IDS.dockerParity]: 0,
+      [CHAIN_IDS.bsctest]: 0,
     },
     admin: {
       default: 1, // here this will by default take the first account as deployer
@@ -101,6 +111,7 @@ export default {
       [CHAIN_IDS.goerli]: 1,
       [CHAIN_IDS.rinkeby]: '0x44DDF1D6292F36B25230a72aBdc7159D37d317Cf',
       [CHAIN_IDS.dockerParity]: 1,
+      [CHAIN_IDS.bsctest]: 1,
     },
   },
   solidity: {
