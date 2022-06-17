@@ -148,8 +148,8 @@ export default {
     },
   },
   tenderly: {
-    username: 'balancer',
-    project: 'v2',
+    username: 'cronaswap',
+    project: 'v3',
   },
   paths: {
     deploy: 'deployments/migrations',

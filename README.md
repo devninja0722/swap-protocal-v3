@@ -1,8 +1,6 @@
-[![CI Status](https://github.com/balancer-labs/balancer-core-v2/workflows/CI/badge.svg)](https://github.com/balancer-labs/balancer-core-v2/actions)
+# cronaswap-protocolv3
 
-# balancer-core-v2
-
-Prototypes for the v2 architecture
+Prototypes for the v3 architecture
 
 ## Requirements
 

@@ -1,22 +1,15 @@
 {
   "name": "@balancer-labs/balancer-core-v2",
   "version": "0.1.0",
-  "description": "Core contracts of the balancer v2 system",
+  "description": "Core contracts of the CronaSwap v3 system",
   "license": "GPL-3.0-only",
-  "homepage": "https://github.com/balancer-labs/balancer-core-v2#readme",
-  "repository": "git@github.com:balancer-labs/balancer-core-v2.git",
+  "homepage": "https://github.com/cronaswap/cronaswap-protocolv3#readme",
+  "repository": "git@github.com:cronaswap/cronaswap-protocolv3.git",
   "bugs": {
-    "url": "https://github.com/balancer-labs/balancer-core-v2/issues"
+    "url": "https://github.com/cronaswap/cronaswap-protocolv3/issues"
   },
   "contributors": [
-    "Daniel Fernandez <daniel@balancer.finance>",
-    "Facu Spagnuolo <facu@balancer.finance>",
-    "Fernando Martinelli <fernando@balancer.finance>",
-    "Greg Taschuk <greg@balancer.finance>",
-    "Jeffrey Bennett <jeff@balancer.finance>",
-    "John Grant <john@balancer.finance>",
-    "Mike McDonald <mike@balancer.finance>",
-    "Nicolás Venturo <nico@balancer.finance>"
+    "Dennis Han <kritical0613@gmail.com>"
   ],
   "scripts": {
     "measure-gas-deployment": "hardhat run lib/scripts/gas-measurement/deployment.ts",
@@ -33,6 +26,7 @@
     "deploy:kovan": "hardhat --network kovan deploy",
     "deploy:ropsten": "hardhat --network ropsten deploy",
     "deploy:goerli": "hardhat --network goerli deploy",
+    "deploy:bsctest": "hardhat --network bsctest deploy",
     "node:hardhat": "hardhat node",
     "prepack": "tsc && yarn compile",
     "seed:local": "hardhat --network localhost seed",
@@ -41,6 +35,7 @@
     "seed:ropsten": "hardhat --network ropsten seed",
     "seed:rinkeby": "hardhat --network rinkeby seed",
     "seed:goerli": "hardhat --network goerli seed",
+    "seed:bsctest": "hardhat --network bsctest seed",
     "seed:hardhat": "hardhat --network hardhat seed",
     "redeploy:docker": "yarn hardhat clean && yarn deploy:docker --reset && yarn seed:docker",
     "export": "hardhat export --export-all deployments/addresses.json",
