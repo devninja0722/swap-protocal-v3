@@ -6,9 +6,20 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<void> {
 
   const { deployer, admin } = await getNamedAccounts();
 
-  await deploy('Authorizer', {
+  const authorizer = await deploy('Authorizer', {
     from: deployer,
     args: [admin],
     log: true,
   });
+
+  try {
+    if (hre.network.live && authorizer.newlyDeployed) {
+      await hre.run('verify:verify', {
+        address: authorizer.address,
+        constructorArguments: [admin],
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
 }

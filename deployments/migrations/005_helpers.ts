@@ -8,9 +8,20 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<void> {
 
   const vault = await deployments.get('Vault');
 
-  await deploy('BalancerHelpers', {
+  const balancerHelpers = await deploy('BalancerHelpers', {
     from: deployer,
     args: [vault.address],
     log: true,
   });
+
+  try {
+    if (hre.network.live && balancerHelpers.newlyDeployed) {
+      await hre.run('verify:verify', {
+        address: balancerHelpers.address,
+        constructorArguments: [vault.address],
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
 }

@@ -23,10 +23,19 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<void> {
     log: true,
   });
 
-  if (hre.network.live && vault.newlyDeployed) {
-    await tenderly.push({
-      name: 'Vault',
-      address: vault.address,
-    });
+  try {
+    if (hre.network.live && vault.newlyDeployed) {
+      await hre.run('verify:verify', {
+        address: vault.address,
+        constructorArguments: [authorizer.address, WETH, THREE_MONTHS, MONTH],
+      });
+
+      await tenderly.push({
+        name: 'Vault',
+        address: vault.address,
+      });
+    }
+  } catch (e) {
+    console.log(e);
   }
 }

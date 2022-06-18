@@ -7,19 +7,42 @@ export default async function (hre: HardhatRuntimeEnvironment): Promise<void> {
   const { deployer } = await getNamedAccounts();
 
   // Deploy on mainnet to keep nonces synced
-  await deploy('TokenFactory', {
+  const factory = await deploy('TokenFactory', {
     from: deployer,
     log: true,
   });
 
-  await deploy('WETH', {
+  const weth = await deploy('WETH', {
     from: deployer,
     args: [deployer],
     log: true,
   });
 
-  await deploy('Multicall', {
+  const multicall = await deploy('Multicall', {
     from: deployer,
     log: true,
   });
+
+  try {
+    if (hre.network.live && factory.newlyDeployed) {
+      await hre.run('verify:verify', {
+        address: factory.address,
+      });
+    }
+
+    if (hre.network.live && weth.newlyDeployed) {
+      await hre.run('verify:verify', {
+        address: weth.address,
+        constructorArguments: [deployer],
+      });
+    }
+
+    if (hre.network.live && multicall.newlyDeployed) {
+      await hre.run('verify:verify', {
+        address: multicall.address,
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
 }
