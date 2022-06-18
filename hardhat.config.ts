@@ -111,7 +111,7 @@ export default {
       [CHAIN_IDS.goerli]: 1,
       [CHAIN_IDS.rinkeby]: '0x44DDF1D6292F36B25230a72aBdc7159D37d317Cf',
       [CHAIN_IDS.dockerParity]: 1,
-      [CHAIN_IDS.bsctest]: 1,
+      [CHAIN_IDS.bsctest]: '0x3A54802752fEFDc1aF2CD0b6DFA4F24694bDEE33',
     },
   },
   solidity: {
@@ -148,8 +148,8 @@ export default {
     },
   },
   tenderly: {
-    username: 'cronaswap',
-    project: 'v3',
+    username: 'Smarty',
+    project: 'cronaswap-v3',
   },
   paths: {
     deploy: 'deployments/migrations',
